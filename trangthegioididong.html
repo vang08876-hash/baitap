@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Thế Giới Di Động</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f3f3f3;
+  }
+  .container h2 {
+    color: #000000; 
+}
+
+.tgdd-search-box {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    .tgdd-search-box h2 {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333333;
+        margin-bottom: 16px;
+        margin-top: 0;
+    }
+
+    .keyword-layout {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px; 
+    }
+
+    .keyword-layout a {
+        text-decoration: none;
+        font-size: 13px;
+        color: #4a4a4a; 
+        transition: color 0.15s ease-in-out;
+    }
+
+    .keyword-layout a:hover {
+        color: #000000; 
+        text-decoration: underline; 
+    }
+  .top-banner {
+    background-color: #e8002a;
+    text-align: center;
+    padding: 5px 0;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .top-banner span {
+    color: #ffd400;
+  }
+  .tgdd-header {
+    background-color: #ffd400;
+    padding: 15px 0 5px 0;
+  }
+  .header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .logo-brand {
+    color: #000 !important;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+  }
+  .logo-brand img {
+    height: 35px;
+    margin-right: 10px;
+    border-radius: 4px;
+  }
+  .search-box {
+    flex-grow: 1;
+    margin: 0 20px;
+    max-width: 500px;
+  }
+  .search-box .form-control {
+    border-radius: 4px 0 0 4px;
+    border: none;
+  }
+  .search-box .btn {
+    border-radius: 0 4px 4px 0;
+    background: #fff;
+    border: none;
+  }
+  .header-utils a {
+    color: #000;
+    font-size: 13px;
+    margin-left: 15px;
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.2);
+  }
+  .header-utils a:hover {
+    background: rgba(255,255,255,0.5);
+  }
+  .tgdd-nav {
+    background-color: #ffd400;
+    padding: 10px 0;
+  }
+  .tgdd-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .tgdd-nav ul li a {
+    color: #000;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+  }
+  .tgdd-nav ul li a:hover {
+    font-weight: bold;
+  }
+  .tgdd-nav ul li a .glyphicon {
+    margin-right: 5px;
+  }
+  .hero-section {
+    margin-top: 15px;
+  }
+  .hero-section img {
+    width: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  .category-grid-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 10px;
+    margin-top: 15px;
+  }
+  .cat-item {
+    text-align: center;
+    font-size: 13px;
+    padding: 10px 5px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  .cat-item:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  .cat-item img {
+    height: 40px;
+    margin-bottom: 10px;
+  }
+  .cat-price {
+    color: #666;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  .tgdd-black-menu {
+    background-color: #1c1c1e;
+    padding: 15px 0;
+    margin-top: 30px;
+    text-align: center;
+  }
+  .tgdd-black-menu a { color: #fff; margin: 0 15px; font-size: 14px; text-decoration: none;}
+  .tgdd-black-menu a.active { color: #ffd400; border-bottom: 2px solid #ffd400; padding-bottom: 5px; }
+  .gaming-bg { background-color: #ffd400; border-radius: 10px; padding: 20px; margin-top: -10px; }
+  .thumbnail { padding: 15px; border: none; border-radius: 8px; background: #fff; text-align: left;}
+  .thumbnail img { width: 100%; height: auto; margin-bottom: 10px; }
+  .product-price { color: #d0021c; font-weight: bold; font-size: 18px; margin: 10px 0 0; }
+  .product-name { font-size: 14px; font-weight: bold; height: 40px; overflow: hidden; }
+  
+  .panel { border: 1px solid #ffd400; border-radius: 8px !important; background: #fff; margin-top:30px;}
+  .panel-heading { color: #fff !important; background-color: #ffd400 !important; padding: 15px; border-top-left-radius: 8px; border-top-right-radius: 8px; text-align: center;}
+  .panel-body { text-align: center; padding: 20px;}
+  .panel-footer { background-color: white !important; text-align: center; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;}
+  .panel-footer h3 { font-size: 24px; color: #d0021c; font-weight: bold; margin:0;}
+  .panel-footer .btn { margin: 15px 0; background-color: #ffd400; color: #000; font-weight: bold; border:none;}
+  </style>
+</head>
+<body id="myPage">
+
+<div class="top-banner">
+  THỨ TƯ <span>SALE SẬP SÀN</span> - GIẢM ĐẾN <span>50%</span> - MUA NGAY
+</div>
+
+<div class="tgdd-header container-fluid">
+  <div class="container">
+    <div class="header-flex">
+      <a href="anhtvu/vang.jpg" class="logo-brand">
+        <span  style="margin-right: 5px;"><img src="anhtvu/vang.jpg" "></span>
+      </a>
+      
+      <div class="search-box">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Bạn tìm gì...">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+          </span>
+        </div>
+      </div>
+      
+      <div class="header-utils hidden-xs">
+        <a href="#">Tài khoản & Đơn hàng</a>
+        <a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Giỏ hàng</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tgdd-nav container-fluid">
+  <div class="container">
+    <ul>
+      <li><a href="#"><span class="glyphicon glyphicon-phone"></span> Điện thoại</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-blackboard"></span> Laptop</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-headphones"></span> Phụ kiện <span class="caret"></span></a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-time"></span> Smartwatch</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-dashboard"></span> Đồng hồ</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-headphones"></span> Tablet <span class="caret"></span></a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-headphones"></span> Máy cũ, Thu cũ <span class="caret"></span></a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-headphones"></span> Màn Hình, Máy in <span class="caret"></span></a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-headphones"></span> sim, Thẻ cào <span class="caret"></span></a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-headphones"></span> Dịch vụ tiện ích <span class="caret"></span></a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="container hero-section">
+  <div class="row">
+  </div>
+</div>
+
+<div class="container">
+  <div class="category-grid-box">
+    <div class="row">
+      <div class="col-xs-3 col-sm-2 cat-item">
+        <img src="anhtvu/OIP3.webp" alt="Quạt">
+        <div>Quạt mini</div>
+        <div class="cat-price">từ 70.000.000.000đ</div>
+      </div>
+      <div class="col-xs-3 col-sm-2 cat-item">
+        <img src="anhtvu/OIP4.webp" alt="Camera">
+        <div>Camera giám sát</div>
+        <div class="cat-price">chỉ từ 450.000.000.000đ</div>
+      </div>
+      <div class="col-xs-3 col-sm-2 cat-item">
+        <img src="anhtvu/download.webp" alt="Chuột">
+        <div>Chuột Silent</div>
+        <div class="cat-price">chỉ từ 90.000.000.000đ</div>
+      </div>
+      <div class="col-xs-3 col-sm-2 cat-item">
+        <img src="anhtvu/download1webp.webp" alt="Sạc">
+        <div>SDP AVA+</div>
+        <div class="cat-price">chỉ từ 150.000.000.000đ</div>
+      </div>
+      <div class="col-xs-3 col-sm-2 cat-item">
+        <img src="anhtvu/download 3.webp" alt="Loa">
+        <div>Loa tai nghe</div>
+        <div class="cat-price">chỉ từ 90.000.000.000đ</div>
+      </div>
+      <div class="col-xs-3 col-sm-2 cat-item">
+        <img src="anhtvu/OIP11.webp" alt="Phụ kiện">
+        <div>Phụ kiện điện thoại</div>
+        <div class="cat-price">Giảm 50%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="margin-top: 20px;">
+  <h4 style="font-weight: bold; margin-bottom: 15px;">Mã tặng bạn</h4>
+  <div class="row">
+    <div class="col-sm-4">
+      <div style="background: #fff; border: 1px dashed #ffd400; padding: 15px; border-radius: 8px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <strong>GIẢM 20% TỐI ĐA 100000K</strong><br>
+          <span style="font-size: 11px; color:#666;">Nhập mã giảm giá trực tiếp...</span>
+        </div>
+        <button class="btn btn-primary btn-sm">Lưu</button>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div style="background: #fff; border: 1px dashed #ffd400; padding: 15px; border-radius: 8px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <strong>GIẢM 10% TỐI ĐA 500000K</strong><br>
+          <span style="font-size: 11px; color:#666;">Thanh toán qua ví VNPAY...</span>
+        </div>
+        <button class="btn btn-primary btn-sm">Lưu</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="tgdd-black-menu">
+    <a href="#" class="active">HOT</a>
+  </div>
+  
+  <div class="container gaming-bg">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="thumbnail">
+          <img src="anhtvu/OIP12.webp" alt="Razer">
+          <p class="product-name">Chuột Gaming Razer DeathAdder</p>
+          <p class="product-price">3.800.000.000₫</p>
+          <p style="text-decoration: line-through; color: #999; font-size:12px;">490.000₫ -22%</p>
+          <p style="font-size: 12px; color: #f59e0b;">★ 5 • Đã bán 14</p>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="thumbnail">
+          <img src="anhtvu/OIP13.webp" alt="Rapoo">
+          <p class="product-name">Chuột Gaming Rapoo V10SE</p>
+          <p class="product-price">75.000.000.000₫</p>
+          <p style="text-decoration: line-through; color: #999; font-size:12px;">105.000₫ -28%</p>
+          <p style="font-size: 12px; color: #f59e0b;">★ 4.9 • Đã bán 2,8k</p>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="thumbnail">
+          <img src="anhtvu/download14.webp" alt="Logitech">
+          <p class="product-name">Tai nghe Gaming Logitech G331</p>
+          <p class="product-price">1.350.000.000₫</p>
+          <p style="text-decoration: line-through; color: #999; font-size:12px;">1.700.000₫ -20%</p>
+          <p style="font-size: 12px; color: #f59e0b;">★ 5 • Đã bán 61</p>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="thumbnail">
+          <img src="anhtvu/OIP15.webp" alt="Bàn phím">
+          <p class="product-name">Bàn Phím Cơ Gaming Razer Ornata</p>
+          <p class="product-price">1.350.000.000₫</p>
+          <p style="text-decoration: line-through; color: #999; font-size:12px;">1.590.000₫ -15%</p>
+          <p style="font-size: 12px; color: #f59e0b;">★ 5 • Đã bán 12</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tgdd-search-box">
+    <h2>Mọi người cũng tìm kiếm</h2>
+    
+    <div class="keyword-layout">
+        <a href="#">laptop</a>
+        <a href="#">tai nghe</a>
+        <a href="#">đồng hồ</a>
+        <a href="#">pc</a>
+        <a href="#">macbook</a>
+        <a href="#">dell</a>
+        <a href="#">asus</a>
+        <a href="#">điện thoại xiaomi</a>
+        <a href="#">orient star</a>
+        <a href="#">loa marshall</a>
+        <a href="#">loa jbl</a>
+        <a href="#">đồng hồ movado</a>
+        <a href="#">laptop gaming</a>
+
+        <a href="#">chuột gaming</a>
+        <a href="#">đồng hồ đôi</a>
+        <a href="#">laptop đồ họa</a>
+        <a href="#">iphone 15</a>
+        <a href="#">iphone 16</a>
+        <a href="#">iphone 17</a>
+        <a href="#">lenovo legion</a>
+        <a href="#">lenovo thinkpad</a>
+        <a href="#">macbook pro m5</a>
+        <a href="#">ipad pro m5</a>
+
+        <a href="#">asus tuf gaming</a>
+        <a href="#">iphone 17 pro</a>
+        <a href="#">iphone 17 256gb</a>
+        <a href="#">iphone 17 pro max</a>
+        <a href="#">macbook neo</a>
+        <a href="#">jbl charge 5</a>
+        <a href="#">dell g15 5530</a>
+        <a href="#">macbook air m5</a>
+        <a href="#">msi katana 15</a>
+
+        <a href="#">garmin fenix 8</a>
+        <a href="#">garmin forerunner 55</a>
+        <a href="#">máy lọc nước</a>
+        <a href="#">iPhone 16 Plus</a>
+        <a href="#">iPhone 16 Pro Max</a>
+        <a href="#">iPhone 16e</a>
+        <a href="#">tủ lạnh</a>
+        <a href="#">samsung galaxy s26</a>
+        <a href="#">samsung galaxy s26 plus</a>
+
+        <a href="#">samsung galaxy s26 ultra</a>
+        <a href="#">iphone 17e</a>
+        <a href="#">điện thoại tecno</a>
+        <a href="#">honor magic v5</a>
+        <a href="#">xiaomi poco f8 pro</a>
+        <a href="#">điện thoại gập</a>
+        <a href="#">samsung s25</a>
+        <a href="#">OPPO Find X9 Ultra</a>
+        <a href="#">OPPO Find X9s</a>
+    </div>
+</div>
+
+<footer class="container" style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #ccc; font-size: 12px;">
+  <div class="row">
+    <div class="col-sm-3">
+      <strong>Tổng đài hỗ trợ</strong>
+      <p>Gọi mua: <span style="color:#288ad6; font-weight:bold;">1900 232 460</span> (8:00 - 21:30)</p>
+      <p>Khiếu nại: <span style="color:#288ad6; font-weight:bold;">1800.1062</span> (8:00 - 21:30)</p>
+      <p>Bảo hành: <span style="color:#288ad6; font-weight:bold;">1900 232 464</span> (8:00 - 21:00)</p>
+    </div>
+    <div class="col-sm-3">
+      <strong>Về công ty</strong>
+      <p><a href="#" style="color:#333; text-decoration:none;">Giới thiệu công ty</a></p>
+      <p><a href="#" style="color:#333; text-decoration:none;">Tuyển dụng</a></p>
+      <p><a href="#" style="color:#333; text-decoration:none;">Gửi góp ý, khiếu nại</a></p>
+    </div>
+    <div class="col-sm-3">
+      <strong>Thông tin khác</strong>
+      <p><a href="#" style="color:#333; text-decoration:none;">Tích điểm Quà tặng VIP</a></p>
+      <p><a href="#" style="color:#333; text-decoration:none;">Chính sách bảo hành</a></p>
+    </div>
+    <div class="col-sm-3 text-right">
+      <a href="#myPage" title="Lên đầu trang" style="color: #666; font-size: 24px;">
+        <span class="glyphicon glyphicon-circle-arrow-up"></span>
+      </a>
+    </div>
+  </div>
+  
+</footer>
+
+<script>
+$(document).ready(function(){
+  $("footer a[href='#myPage']").on('click', function(event) {
+    if (this.hash !== "") {
+      event.preventDefault();
+      var hash = this.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+        window.location.hash = hash;
+      });
+    }
+  });
+})
+</script>
+
+</body>
+</html>
